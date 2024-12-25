@@ -53,7 +53,7 @@ public class GravesCommand implements CommandExecutor {
                 if (player.getLocation().distance(graves.getLocation()) < 10) {
                     foundGrave = graves;
                 } else {
-                    Bukkit.broadcastMessage("Can't find grave");
+                    Bukkit.broadcastMessage("Can't find grave // Your not close enough");
                 }
             }
             GalaxyGraves.getInstance().graveManager.unRegisterGrave(foundGrave);
