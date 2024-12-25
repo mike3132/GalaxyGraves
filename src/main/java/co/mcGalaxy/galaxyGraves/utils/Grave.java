@@ -67,10 +67,9 @@ public class Grave {
     }
 
     public void remove(Location location) {
-        for (Player online : Bukkit.getOnlinePlayers()) {
-            ServerPlayer onlinePlayers = ((CraftPlayer) player).getHandle();
-            onlinePlayers.connection.send(new ClientboundRemoveEntitiesPacket(serverPlayer.getId()));
-        }
+        ServerPlayer onlinePlayers = ((CraftPlayer) player).getHandle();
+        onlinePlayers.connection.send(new ClientboundRemoveEntitiesPacket(serverPlayer.getId()));
+        Bukkit.broadcastMessage("Did this actually run?");
     }
 
     public Location getLocation() {
