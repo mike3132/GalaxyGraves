@@ -1,0 +1,12 @@
+name: GalaxyGraves
+version: '1.0'
+main: co.mcGalaxy.galaxyGraves.GalaxyGraves
+api-version: '1.21'
+softdepend:
+  - PlaceholderAPI
+commands:
+  Graves:
+    permission: GalaxyGraves.Command
+    description: Main plugin command
+    aliases:
+      - grave

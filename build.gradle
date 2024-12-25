@@ -1,0 +1,69 @@
+plugins {
+    id 'java-library'
+    id "com.github.johnrengelman.shadow" version "8.1.1"
+    id 'maven-publish'
+    id ("io.papermc.paperweight.userdev") version "1.7.3"
+}
+
+group = 'co.mcGalaxy'
+version = '1.0'
+
+repositories {
+    mavenCentral()
+    maven {
+        name = "spigotmc-repo"
+        url = "https://hub.spigotmc.org/nexus/content/repositories/snapshots/"
+    }
+    maven {
+        name = "sonatype"
+        url = "https://oss.sonatype.org/content/groups/public/"
+    }
+    maven {
+        url = 'https://repo.extendedclip.com/releases/'
+    }
+    maven {
+        url = 'https://mvn.lumine.io/repository/maven-public/'
+    }
+}
+
+dependencies {
+    compileOnly "org.spigotmc:spigot-api:1.21-R0.1-SNAPSHOT"
+    compileOnly 'me.clip:placeholderapi:2.11.6'
+    compileOnly 'com.ticxo.modelengine:ModelEngine:R4.0.4'
+    implementation 'com.github.stefvanschie.inventoryframework:IF:0.10.14'
+    paperweight.paperDevBundle("1.21.1-R0.1-SNAPSHOT")
+}
+
+java {
+    toolchain {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+        languageVersion.set(JavaLanguageVersion.of(21))
+        disableAutoTargetJvm()
+    }
+}
+
+compileJava {
+    options.compilerArgs += ['-parameters']
+    options.encoding = 'UTF-8'
+}
+
+
+processResources {
+    def props = [version: version]
+    inputs.properties props
+    filteringCharset 'UTF-8'
+    filesMatching('plugin.yml') {
+        expand props
+    }
+}
+
+shadowJar {
+    archiveClassifier.set(null)
+    //relocate('dev.rosewood.rosegarden', 'dev.rosewood.rosemenus.lib.rosegarden')
+    archiveFileName = "GalaxyGraves-" + findProperty("version") + ".jar"
+    destinationDirectory = "C:\\Users\\mspic\\Desktop\\Build Tools\\plugins" as File
+    minimize()
+}
+
+build.dependsOn shadowJar

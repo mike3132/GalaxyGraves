@@ -1,0 +1,45 @@
+#                                                 🖥🖥🖥🖥🖥🖥🖥🖥🖥🖥🖥🖥🖥
+#                                                💻Resource Rush Messages💻
+#                                                  🔥Coded By Mike3132🔥
+#                                                💻Resource Rush Messages💻
+#                                                 🖥🖥🖥🖥🖥🖥🖥🖥🖥🖥🖥🖥🖥
+
+#✍✍✍✍ This file handles all messages for the plugin including the prefix.✍✍✍✍
+#✍✍✍✍ You can change anything here to be whatever custom stuff you want.✍✍✍✍
+#☠☠☠☠ DO NOT CHANGE THE "Messages:" line as this will break the plugin.☠☠☠☠
+#☠☠☠☠ ALL messages must have single quotes '' as seen in this default config.☠☠☠☠
+
+#📝📝📝📝 Placeholders 📝📝📝📝
+
+
+
+#Plugin prefix is sent before ALL messages in the plugin.
+Messages:
+  #Plugin prefix for all messages.
+  Prefix: '&f[<g:#03fcfc:#1703fc>Galaxy Graves&f] &7> '
+
+  #➳➳➳➳➳ Console Messages ➳➳➳➳➳
+  #Players only command
+  Player-Only: '&4ERROR: &cYou must be a player to use this command'
+
+  #➳➳➳➳➳ General Messages ➳➳➳➳➳
+  #No permission message
+  No-Permission: '&4ERROR: &cYou do not have permission to use this command'
+
+  #Not enough command arguments
+  Not-Enough-Args: "&4Error: &cYou have not supplied enough arguments for this command"
+
+  #➳➳➳➳➳ Player Messages ➳➳➳➳➳
+
+
+
+  #➳➳➳➳➳ Admin Messages ➳➳➳➳➳
+
+
+
+  #See config.yml for permissions, and other plugin configurations
+  #♏ If you have any questions please join my discord, open a support ticket and @Mike3132
+  #♏ https://discord.gg/ePQGvQuzG3
+  #♏ Thanks for downloading and have a wonderful day
+  #♛♛♛♛♛ End of messages.yml ♛♛♛♛♛
+  #This is the default messages file.
