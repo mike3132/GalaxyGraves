@@ -34,24 +34,6 @@ public class GraveManager {
         return graves;
     }
 
-    public void open(Player player) {
-    }
-
-    public ItemStack[] getInventory() {
-        return inventory;
-    }
-
-    public Location getLocation() {
-        return location;
-    }
-
-    public MegModel getModel() {
-        return model;
-    }
-
-    public UUID getPlayer() {
-        return player;
-    }
 
 
 }
