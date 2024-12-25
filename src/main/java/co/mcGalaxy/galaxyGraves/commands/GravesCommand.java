@@ -6,13 +6,13 @@ import co.mcGalaxy.galaxyGraves.chat.PlayerMessage;
 import co.mcGalaxy.galaxyGraves.configs.ConfigManager;
 import co.mcGalaxy.galaxyGraves.utils.Grave;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class GravesCommand implements CommandExecutor {
-
 
     public GravesCommand() {
         GalaxyGraves.getInstance().getCommand("Graves").setExecutor(this);
@@ -48,11 +48,16 @@ public class GravesCommand implements CommandExecutor {
             return false;
         }
         if (args[0].equalsIgnoreCase("Remove")) {
+            Grave foundGrave = null;
             for (Grave graves : GalaxyGraves.getInstance().graveManager.getGraves().values()) {
-                GalaxyGraves.getInstance().graveManager.unRegisterGrave(graves);
-                Bukkit.broadcastMessage("Test");
-                player.sendMessage(graves.getLocation().toString());
+                if (player.getLocation().distance(graves.getLocation()) < 10) {
+                    foundGrave = graves;
+                } else {
+                    Bukkit.broadcastMessage("Can't find grave");
+                }
             }
+            GalaxyGraves.getInstance().graveManager.unRegisterGrave(foundGrave);
+
             PlayerMessage.sendPlayerMessageWithoutConfig(player, "&dRemoving shit");
             return false;
         }
