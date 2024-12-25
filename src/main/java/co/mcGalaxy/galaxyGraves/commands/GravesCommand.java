@@ -6,6 +6,7 @@ import co.mcGalaxy.galaxyGraves.chat.PlayerMessage;
 import co.mcGalaxy.galaxyGraves.configs.ConfigManager;
 import co.mcGalaxy.galaxyGraves.managers.GraveManager;
 import co.mcGalaxy.galaxyGraves.utils.Grave;
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -44,13 +45,13 @@ public class GravesCommand implements CommandExecutor {
 
         if (args[0].equalsIgnoreCase("Spawn")) {
             Grave grave = new Grave(player, player.getLocation(), player.getName());
-            grave.spawn(player.getLocation());
             graveManager.registerGrave(grave);
             PlayerMessage.sendPlayerMessageWithoutConfig(player, "&eSpawning shit");
             return false;
         }
         if (args[0].equalsIgnoreCase("Remove")) {
             for (Grave graves : graveManager.getGraves().values()) {
+                Bukkit.broadcastMessage("Test");
                 player.sendMessage(graves.getLocation().toString());
             }
             PlayerMessage.sendPlayerMessageWithoutConfig(player, "&dRemoving shit");
