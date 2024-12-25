@@ -4,7 +4,6 @@ import co.mcGalaxy.galaxyGraves.GalaxyGraves;
 import co.mcGalaxy.galaxyGraves.chat.ConsoleMessage;
 import co.mcGalaxy.galaxyGraves.chat.PlayerMessage;
 import co.mcGalaxy.galaxyGraves.configs.ConfigManager;
-import co.mcGalaxy.galaxyGraves.managers.GraveManager;
 import co.mcGalaxy.galaxyGraves.utils.Grave;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -35,7 +34,6 @@ public class GravesCommand implements CommandExecutor {
             return false;
         }
 
-        GraveManager graveManager = new GraveManager(player.getUniqueId(), player.getLocation(), player.getInventory().getContents());
 
         PlayerMessage.sendPlayerMessageWithoutConfig(player, "<g:#00ff2a:#24b33b>Player Command Ran");
         if (args.length == 0) {
@@ -45,13 +43,13 @@ public class GravesCommand implements CommandExecutor {
 
         if (args[0].equalsIgnoreCase("Spawn")) {
             Grave grave = new Grave(player, player.getLocation(), player.getName());
-            graveManager.registerGrave(grave);
+            GalaxyGraves.getInstance().graveManager.registerGrave(grave);
             PlayerMessage.sendPlayerMessageWithoutConfig(player, "&eSpawning shit");
             return false;
         }
         if (args[0].equalsIgnoreCase("Remove")) {
-            for (Grave graves : graveManager.getGraves().values()) {
-                graveManager.unRegisterGrave(graves);
+            for (Grave graves : GalaxyGraves.getInstance().graveManager.getGraves().values()) {
+                GalaxyGraves.getInstance().graveManager.unRegisterGrave(graves);
                 Bukkit.broadcastMessage("Test");
                 player.sendMessage(graves.getLocation().toString());
             }

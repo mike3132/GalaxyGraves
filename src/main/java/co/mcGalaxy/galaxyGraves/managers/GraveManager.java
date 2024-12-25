@@ -15,22 +15,13 @@ public class GraveManager {
 
     private final Map<Location, Grave> graves = new HashMap<>();
 
-    private final UUID player;
-    private final Location location;
-    private final ItemStack[] inventory;
-    private final MegModel model;
-
-    public GraveManager(UUID player, Location location, ItemStack[] inventory) {
-        this.player = player;
-        this.location = location;
-        this.inventory = inventory;
-        this.model = new MegModel();
+    public GraveManager() {
     }
 
     public void registerGrave(Grave grave) {
-        this.graves.put(location, grave);
-        grave.spawn(location);
-        Bukkit.broadcastMessage("Putting grave at " + location);
+        this.graves.put(grave.getLocation(), grave);
+        grave.spawn(grave.getLocation());
+        Bukkit.broadcastMessage("Putting grave at " + grave.getLocation());
     }
 
     public void unRegisterGrave(Grave grave) {

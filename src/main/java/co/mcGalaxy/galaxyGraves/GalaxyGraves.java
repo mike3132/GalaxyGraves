@@ -4,12 +4,14 @@ import co.mcGalaxy.galaxyGraves.commands.GravesCommand;
 import co.mcGalaxy.galaxyGraves.configs.ConfigManager;
 import co.mcGalaxy.galaxyGraves.events.PlayerDeath;
 import co.mcGalaxy.galaxyGraves.events.PlayerInteract;
+import co.mcGalaxy.galaxyGraves.managers.GraveManager;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class GalaxyGraves extends JavaPlugin {
 
     private static GalaxyGraves INSTANCE;
+    public GraveManager graveManager = new GraveManager();
 
     @Override
     public void onEnable() {
