@@ -51,7 +51,7 @@ public class GravesCommand implements CommandExecutor {
         }
         if (args[0].equalsIgnoreCase("Remove")) {
             for (Grave graves : graveManager.getGraves().values()) {
-                graveManager.unRegisterGrave(graves);
+                player.sendMessage(graves.getLocation().toString());
             }
             PlayerMessage.sendPlayerMessageWithoutConfig(player, "&dRemoving shit");
             return false;

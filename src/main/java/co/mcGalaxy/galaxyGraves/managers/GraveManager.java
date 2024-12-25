@@ -2,6 +2,7 @@ package co.mcGalaxy.galaxyGraves.managers;
 
 import co.mcGalaxy.galaxyGraves.modelengine.MegModel;
 import co.mcGalaxy.galaxyGraves.utils.Grave;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -29,12 +30,14 @@ public class GraveManager {
     public void registerGrave(Grave grave) {
         this.graves.put(location, grave);
         grave.spawn(location);
+        Bukkit.broadcastMessage("Putting grave at " + location);
     }
 
     public void unRegisterGrave(Grave grave) {
         this.graves.remove(grave.getLocation());
         grave.remove(grave.getLocation());
     }
+
 
     public Map<Location, Grave> getGraves() {
         return graves;
