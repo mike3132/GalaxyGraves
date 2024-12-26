@@ -1,4 +1,4 @@
-package co.mcGalaxy.galaxyGraves.modelengine;
+package co.mcGalaxy.galaxyGraves.utils;
 
 import com.ticxo.modelengine.api.ModelEngineAPI;
 import com.ticxo.modelengine.api.model.ActiveModel;

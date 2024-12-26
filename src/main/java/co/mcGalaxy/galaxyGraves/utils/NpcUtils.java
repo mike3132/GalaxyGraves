@@ -14,7 +14,6 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.network.CommonListenerCookie;
 import net.minecraft.server.network.ServerGamePacketListenerImpl;
 import net.minecraft.world.entity.Pose;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.craftbukkit.entity.CraftPlayer;
 import org.bukkit.entity.Player;
@@ -22,14 +21,14 @@ import org.bukkit.entity.Player;
 import java.util.Set;
 import java.util.UUID;
 
-public class Grave {
+public class NpcUtils {
 
     private final Location location;
     private final Player player;
     private final String name;
     public ServerPlayer serverPlayer;
 
-    public Grave(Player player, Location location, String name) {
+    public NpcUtils(Player player, Location location, String name) {
         this.location = location;
         this.player = player;
         this.name = name;
@@ -42,7 +41,7 @@ public class Grave {
         ServerLevel level = sp.serverLevel();
         GameProfile profile = new GameProfile(UUID.randomUUID(), name);
 
-        // Skin stuff to be implemented
+        //TODO: Skin stuff to be implemented
         String signature = "";
         String texture = "";
 
