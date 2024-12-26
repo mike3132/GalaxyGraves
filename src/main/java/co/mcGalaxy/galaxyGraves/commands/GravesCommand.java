@@ -43,13 +43,13 @@ public class GravesCommand implements CommandExecutor {
         }
 
         if (args[0].equalsIgnoreCase("Spawn")) {
-            Model model = new Model(player.getLocation());
-            Npc npc = new Npc(player, player.getLocation(), player.getName());
-            Grave grave = new Grave(player, player.getLocation(), npc, model);
+            Grave grave = new Grave(player);
+            grave.create();
             GalaxyGraves.getInstance().graveManager.add(grave);
             PlayerMessage.sendPlayerMessageWithoutConfig(player, "&eSpawning shit");
             return false;
         }
+
         //TODO: Figure out a better way to write this and not have nested for loops #UGLY
         if (args[0].equalsIgnoreCase("Remove")) {
             Npc foundNpc = null;

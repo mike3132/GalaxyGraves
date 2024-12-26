@@ -11,18 +11,18 @@ public class Grave {
     private final Npc npc;
     private final Model model;
 
-    public Grave(Player player, Location location, Npc npc, Model model) {
-        this.location = location;
-        this.npc = npc;
-        this.model = model;
+    public Grave(Player player) {
+        this.location = player.getLocation();
+        this.npc = new Npc(player, player.getLocation(), player.getName());
+        this.model = new Model(player.getLocation());
     }
 
-    public void create(Npc npc, Model model) {
+    public void create() {
         this.npc.spawn(npc.getLocation());
         this.model.spawn(model.getLocation());
     }
 
-    public void remove(Npc npc, Model model) {
+    public void remove() {
         if (GalaxyGraves.getInstance().graveManager.getGraves().isEmpty()) {
             Bukkit.broadcastMessage("Graves map is empty");
             return;
