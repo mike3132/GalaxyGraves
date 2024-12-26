@@ -69,7 +69,6 @@ public class GravesCommand implements CommandExecutor {
             return false;
         }
 
-
         if (args[0].equalsIgnoreCase("List")) {
             player.sendMessage(GalaxyGraves.getInstance().graveManager.getGraves().toString());
             return false;
