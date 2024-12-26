@@ -1,29 +1,28 @@
 package co.mcGalaxy.galaxyGraves.managers;
 
 import co.mcGalaxy.galaxyGraves.objects.Grave;
-import co.mcGalaxy.galaxyGraves.objects.Model;
-import co.mcGalaxy.galaxyGraves.objects.Npc;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
 import org.bukkit.Location;
 
+import java.util.UUID;
+
 public class GraveManager {
 
-    private final Table<Location, Npc, Model> graves = HashBasedTable.create();
+    private final Table<UUID, Location, Grave> graves = HashBasedTable.create();
 
     public GraveManager() {
     }
 
     public void add(Grave grave) {
-        this.graves.put(grave.getLocation(), grave.getNpc(), grave.getModel());
+        this.graves.put(grave.getUuid(), grave.getLocation(), grave.getGrave());
     }
 
     public void remove(Grave grave) {
-        this.graves.remove(grave.getLocation(), grave.getNpc());
+        this.graves.remove(grave.getUuid(), grave.getLocation());
     }
 
-    public Table<Location, Npc, Model> getGraves() {
+    public Table<UUID, Location, Grave> getGraves() {
         return graves;
     }
-
 }

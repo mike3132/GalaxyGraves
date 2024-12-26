@@ -43,7 +43,7 @@ public class GravesCommand implements CommandExecutor {
         }
 
         if (args[0].equalsIgnoreCase("Spawn")) {
-            Grave grave = new Grave(player);
+            Grave grave = new Grave(player, player.getUniqueId());
             grave.create();
             GalaxyGraves.getInstance().graveManager.add(grave);
             PlayerMessage.sendPlayerMessageWithoutConfig(player, "&eSpawning shit");
@@ -52,22 +52,20 @@ public class GravesCommand implements CommandExecutor {
 
         //TODO: Figure out a better way to write this and not have nested for loops #UGLY
         if (args[0].equalsIgnoreCase("Remove")) {
-            Npc foundNpc = null;
-            Model foundModel = null;
-            for (Npc graves : GalaxyGraves.getInstance().graveManager.getGraves().columnKeySet()) {
-                for (Model model : GalaxyGraves.getInstance().graveManager.getGraves().values()) {
-                    //TODO: Need to figure out what 10 is here and rewrite this to be a guard clause
-                    if (player.getLocation().distance(graves.getLocation()) < 10) {
-                        foundNpc = graves;
-                        foundModel = model;
-                    } else {
-                        Bukkit.broadcastMessage("Can't find grave // Your not close enough");
-                    }
+            Grave foundGrave = null;
+            for (Grave graves : GalaxyGraves.getInstance().graveManager.getGraves().values()) {
+                if (player.getLocation().distance(graves.getLocation()) < 10) {
+                    foundGrave = graves;
+                    break;
                 }
             }
-            GalaxyGraves.getInstance().graveManager.remove();
-
-            PlayerMessage.sendPlayerMessageWithoutConfig(player, "&dRemoving shit");
+            if (foundGrave != null) {
+                GalaxyGraves.getInstance().graveManager.remove(foundGrave);
+                foundGrave.remove();
+                PlayerMessage.sendPlayerMessageWithoutConfig(player, "&dRemoving shit");
+                return false;
+            }
+            PlayerMessage.sendPlayerMessageWithoutConfig(player, "&dNo graves nearby to remove");
             return false;
         }
 

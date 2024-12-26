@@ -2,7 +2,6 @@ package co.mcGalaxy.galaxyGraves.events;
 
 import co.mcGalaxy.galaxyGraves.GalaxyGraves;
 import co.mcGalaxy.galaxyGraves.inventory.PlayerInventories;
-import co.mcGalaxy.galaxyGraves.utils.MegModel;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -12,7 +11,6 @@ import org.bukkit.event.player.PlayerInteractEntityEvent;
 public class PlayerInteract implements Listener {
 
     private final PlayerInventories playerInventories = new PlayerInventories();
-    private final MegModel megModel = new MegModel();
 
     GalaxyGraves plugin;
 

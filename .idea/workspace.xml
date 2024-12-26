@@ -7,6 +7,9 @@
     <list default="true" id="61cd3807-1bff-4c1e-bf53-db81f678a80a" name="Changes" comment="Debugging">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/commands/GravesCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/commands/GravesCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/events/PlayerInteract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/events/PlayerInteract.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/managers/GraveManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/managers/GraveManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/objects/Grave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/objects/Grave.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,7 +209,15 @@
       <option name="project" value="LOCAL" />
       <updated>1735217987910</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Debugging">
+      <option name="closed" value="true" />
+      <created>1735219400149</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1735219400149</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
