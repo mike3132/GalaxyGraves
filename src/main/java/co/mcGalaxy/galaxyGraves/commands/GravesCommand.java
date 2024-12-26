@@ -65,7 +65,8 @@ public class GravesCommand implements CommandExecutor {
                     }
                 }
             }
-            GalaxyGraves.getInstance().grave.remove(foundNpc, foundModel);
+            GalaxyGraves.getInstance().graveManager.remove();
+
             PlayerMessage.sendPlayerMessageWithoutConfig(player, "&dRemoving shit");
             return false;
         }
