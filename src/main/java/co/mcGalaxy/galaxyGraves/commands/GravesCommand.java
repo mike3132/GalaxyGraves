@@ -4,14 +4,13 @@ import co.mcGalaxy.galaxyGraves.GalaxyGraves;
 import co.mcGalaxy.galaxyGraves.chat.ConsoleMessage;
 import co.mcGalaxy.galaxyGraves.chat.PlayerMessage;
 import co.mcGalaxy.galaxyGraves.configs.ConfigManager;
-import co.mcGalaxy.galaxyGraves.utils.ModelUtils;
-import co.mcGalaxy.galaxyGraves.utils.NpcUtils;
+import co.mcGalaxy.galaxyGraves.objects.Grave;
+import co.mcGalaxy.galaxyGraves.objects.Model;
+import co.mcGalaxy.galaxyGraves.objects.Npc;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.Pig;
 import org.bukkit.entity.Player;
 
 public class GravesCommand implements CommandExecutor {
@@ -44,28 +43,29 @@ public class GravesCommand implements CommandExecutor {
         }
 
         if (args[0].equalsIgnoreCase("Spawn")) {
-            NpcUtils npcUtils = new NpcUtils(player, player.getLocation(), player.getName());
-            ModelUtils modelUtils = new ModelUtils(player.getLocation());
-            GalaxyGraves.getInstance().graveManager.registerGrave(npcUtils, modelUtils);
+            Model model = new Model(player.getLocation());
+            Npc npc = new Npc(player, player.getLocation(), player.getName());
+            Grave grave = new Grave(player, player.getLocation(), npc, model);
+            GalaxyGraves.getInstance().graveManager.add(grave);
             PlayerMessage.sendPlayerMessageWithoutConfig(player, "&eSpawning shit");
             return false;
         }
         //TODO: Figure out a better way to write this and not have nested for loops #UGLY
         if (args[0].equalsIgnoreCase("Remove")) {
-            NpcUtils foundNpcUtils = null;
-            ModelUtils foundModel = null;
-            for (NpcUtils graves : GalaxyGraves.getInstance().graveManager.getGraves().columnKeySet()) {
-                for (ModelUtils modelUtils : GalaxyGraves.getInstance().graveManager.getGraves().values()) {
+            Npc foundNpc = null;
+            Model foundModel = null;
+            for (Npc graves : GalaxyGraves.getInstance().graveManager.getGraves().columnKeySet()) {
+                for (Model model : GalaxyGraves.getInstance().graveManager.getGraves().values()) {
                     //TODO: Need to figure out what 10 is here and rewrite this to be a guard clause
                     if (player.getLocation().distance(graves.getLocation()) < 10) {
-                        foundNpcUtils = graves;
-                        foundModel = modelUtils;
+                        foundNpc = graves;
+                        foundModel = model;
                     } else {
                         Bukkit.broadcastMessage("Can't find grave // Your not close enough");
                     }
                 }
             }
-            GalaxyGraves.getInstance().graveManager.unRegisterGrave(foundNpcUtils, foundModel);
+            GalaxyGraves.getInstance().grave.remove(foundNpc, foundModel);
             PlayerMessage.sendPlayerMessageWithoutConfig(player, "&dRemoving shit");
             return false;
         }

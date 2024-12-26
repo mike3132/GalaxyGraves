@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="61cd3807-1bff-4c1e-bf53-db81f678a80a" name="Changes" comment="Debugging">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="61cd3807-1bff-4c1e-bf53-db81f678a80a" name="Changes" comment="Objectified some stuffs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/GalaxyGraves.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/GalaxyGraves.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/commands/GravesCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/commands/GravesCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/events/PlayerInteract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/events/PlayerInteract.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/managers/GraveManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/managers/GraveManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/modelengine/MegModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/utils/MegModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/utils/Grave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/utils/NpcUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/utils/MegModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/utils/ModelUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/objects/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/utils/NpcUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/objects/Npc.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,12 +187,21 @@
       <option name="project" value="LOCAL" />
       <updated>1735141275812</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Objectified some stuffs">
+      <option name="closed" value="true" />
+      <created>1735214559296</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1735214559297</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Removed old code" />
     <MESSAGE value="Debugging" />
-    <option name="LAST_COMMIT_MESSAGE" value="Debugging" />
+    <MESSAGE value="Objectified some stuffs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Objectified some stuffs" />
   </component>
 </project>

@@ -1,4 +1,4 @@
-package co.mcGalaxy.galaxyGraves.utils;
+package co.mcGalaxy.galaxyGraves.objects;
 
 import com.ticxo.modelengine.api.ModelEngineAPI;
 import com.ticxo.modelengine.api.model.ActiveModel;
@@ -6,12 +6,12 @@ import com.ticxo.modelengine.api.model.ModeledEntity;
 import org.bukkit.Location;
 import org.bukkit.entity.Pig;
 
-public class ModelUtils {
+public class Model {
 
     private final Location location;
     public Pig pig;
 
-    public ModelUtils(Location location) {
+    public Model(Location location) {
         this.location = location;
     }
 

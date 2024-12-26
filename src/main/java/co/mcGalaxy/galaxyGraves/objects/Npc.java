@@ -1,4 +1,4 @@
-package co.mcGalaxy.galaxyGraves.utils;
+package co.mcGalaxy.galaxyGraves.objects;
 
 import com.mojang.authlib.GameProfile;
 import net.minecraft.network.Connection;
@@ -21,14 +21,14 @@ import org.bukkit.entity.Player;
 import java.util.Set;
 import java.util.UUID;
 
-public class NpcUtils {
+public class Npc {
 
     private final Location location;
     private final Player player;
     private final String name;
     public ServerPlayer serverPlayer;
 
-    public NpcUtils(Player player, Location location, String name) {
+    public Npc(Player player, Location location, String name) {
         this.location = location;
         this.player = player;
         this.name = name;

@@ -5,6 +5,7 @@ import co.mcGalaxy.galaxyGraves.configs.ConfigManager;
 import co.mcGalaxy.galaxyGraves.events.PlayerDeath;
 import co.mcGalaxy.galaxyGraves.events.PlayerInteract;
 import co.mcGalaxy.galaxyGraves.managers.GraveManager;
+import co.mcGalaxy.galaxyGraves.objects.Grave;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -38,7 +39,7 @@ public final class GalaxyGraves extends JavaPlugin {
     }
 
     public static GalaxyGraves getInstance() {
-    return INSTANCE;
+        return INSTANCE;
     }
 
     private void registerCommands() {

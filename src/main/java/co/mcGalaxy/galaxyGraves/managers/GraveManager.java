@@ -1,37 +1,29 @@
 package co.mcGalaxy.galaxyGraves.managers;
 
-import co.mcGalaxy.galaxyGraves.utils.ModelUtils;
-import co.mcGalaxy.galaxyGraves.utils.NpcUtils;
+import co.mcGalaxy.galaxyGraves.objects.Grave;
+import co.mcGalaxy.galaxyGraves.objects.Model;
+import co.mcGalaxy.galaxyGraves.objects.Npc;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 
 public class GraveManager {
 
-    private final Table<Location, NpcUtils, ModelUtils> graves = HashBasedTable.create();
+    private final Table<Location, Npc, Model> graves = HashBasedTable.create();
 
     public GraveManager() {
     }
 
-    public void registerGrave(NpcUtils npcUtils, ModelUtils modelUtils) {
-        npcUtils.spawn(npcUtils.getLocation());
-        modelUtils.spawn(modelUtils.getLocation());
-        this.graves.put(npcUtils.getLocation(), npcUtils, modelUtils);
+    public void add(Grave grave) {
+        this.graves.put(grave.getLocation(), grave.getNpc(), grave.getModel());
     }
 
-    public void unRegisterGrave(NpcUtils npcUtils, ModelUtils modelUtils) {
-        if (this.graves.isEmpty()) {
-            Bukkit.broadcastMessage("Graves map is empty");
-            return;
-        }
-        npcUtils.remove(npcUtils.getLocation());
-        modelUtils.remove(modelUtils.getLocation());
-        this.graves.remove(npcUtils.getLocation(), npcUtils);
+    public void remove(Grave grave) {
+        this.graves.remove(grave.getLocation(), grave.getNpc());
     }
 
-
-    public Table<Location, NpcUtils, ModelUtils> getGraves() {
+    public Table<Location, Npc, Model> getGraves() {
         return graves;
     }
+
 }
