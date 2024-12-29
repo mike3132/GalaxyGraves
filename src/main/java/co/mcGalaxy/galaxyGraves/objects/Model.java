@@ -22,6 +22,8 @@ public class Model {
         pig.setInvisible(true);
         pig.setSilent(true);
         pig.setInvulnerable(true);
+        pig.setGravity(false);
+        pig.setGlowing(true);
 
         ModeledEntity modeledEntity = ModelEngineAPI.createModeledEntity(pig);
         ActiveModel activeModel = ModelEngineAPI.createActiveModel("devstone");

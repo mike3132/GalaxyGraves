@@ -2,10 +2,8 @@ package co.mcGalaxy.galaxyGraves;
 
 import co.mcGalaxy.galaxyGraves.commands.GravesCommand;
 import co.mcGalaxy.galaxyGraves.configs.ConfigManager;
-import co.mcGalaxy.galaxyGraves.events.PlayerDeath;
-import co.mcGalaxy.galaxyGraves.events.PlayerInteract;
+import co.mcGalaxy.galaxyGraves.events.GraveEvent;
 import co.mcGalaxy.galaxyGraves.managers.GraveManager;
-import co.mcGalaxy.galaxyGraves.objects.Grave;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -20,8 +18,7 @@ public final class GalaxyGraves extends JavaPlugin {
         // Plugin startup logic
 
         // Event register
-        Bukkit.getPluginManager().registerEvents(new PlayerInteract(this), this);
-        Bukkit.getPluginManager().registerEvents(new PlayerDeath(), this);
+        Bukkit.getPluginManager().registerEvents(new GraveEvent(this), this);
 
         // Command register
         registerCommands();

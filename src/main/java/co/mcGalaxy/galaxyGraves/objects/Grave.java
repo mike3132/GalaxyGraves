@@ -1,7 +1,5 @@
 package co.mcGalaxy.galaxyGraves.objects;
 
-import co.mcGalaxy.galaxyGraves.GalaxyGraves;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
@@ -17,7 +15,7 @@ public class Grave {
 
     public Grave(Player player, UUID uuid) {
         this.location = player.getLocation();
-        this.npc = new Npc(player, player.getLocation(), player.getName());
+        this.npc = new Npc(player, player.getLocation(), player.getName(), player.getName());
         this.model = new Model(player.getLocation());
         this.uuid = player.getUniqueId();
         grave = this;

@@ -50,7 +50,6 @@ public class GravesCommand implements CommandExecutor {
             return false;
         }
 
-        //TODO: Figure out a better way to write this and not have nested for loops #UGLY
         if (args[0].equalsIgnoreCase("Remove")) {
             Grave foundGrave = null;
             for (Grave graves : GalaxyGraves.getInstance().graveManager.getGraves().values()) {
