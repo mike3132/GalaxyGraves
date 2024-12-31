@@ -4,10 +4,7 @@ import co.mcGalaxy.galaxyGraves.GalaxyGraves;
 import co.mcGalaxy.galaxyGraves.chat.ConsoleMessage;
 import co.mcGalaxy.galaxyGraves.chat.PlayerMessage;
 import co.mcGalaxy.galaxyGraves.configs.ConfigManager;
-import co.mcGalaxy.galaxyGraves.objects.Grave;
-import co.mcGalaxy.galaxyGraves.objects.Model;
-import co.mcGalaxy.galaxyGraves.objects.Npc;
-import org.bukkit.Bukkit;
+import co.mcGalaxy.galaxyGraves.grave.Grave;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -46,6 +43,7 @@ public class GravesCommand implements CommandExecutor {
             Grave grave = new Grave(player, player.getUniqueId());
             grave.create();
             GalaxyGraves.getInstance().graveManager.add(grave);
+            GalaxyGraves.getInstance().graveManager.saveGrave(player.getUniqueId(), grave);
             PlayerMessage.sendPlayerMessageWithoutConfig(player, "&eSpawning shit");
             return false;
         }

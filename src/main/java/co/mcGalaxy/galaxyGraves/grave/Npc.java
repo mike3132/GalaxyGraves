@@ -1,4 +1,4 @@
-package co.mcGalaxy.galaxyGraves.objects;
+package co.mcGalaxy.galaxyGraves.grave;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;

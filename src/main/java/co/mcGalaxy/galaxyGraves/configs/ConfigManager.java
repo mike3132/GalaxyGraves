@@ -10,7 +10,7 @@ import java.util.Locale;
 
 public enum ConfigManager {
 
-    MESSAGES, INVENTORIES;
+    MESSAGES;
 
     private final File file;
     private FileConfiguration configuration;
@@ -50,23 +50,6 @@ public enum ConfigManager {
     public static void reloadAll() {
         for (ConfigManager value : values()) {
             value.reload();
-        }
-    }
-
-    // Nothing below this line is put into memory, It's all directly written to and read from the config file.
-    public File getFileFromConfig() {
-        return new File(GalaxyGraves.getInstance().getDataFolder(), this.toString().toLowerCase(Locale.ROOT) + ".yml");
-    }
-
-    public FileConfiguration getConfig() {
-        return YamlConfiguration.loadConfiguration(getFile());
-    }
-
-    public void save(FileConfiguration configuration) {
-        try {
-            configuration.save(getFile());
-        } catch (IOException exception) {
-            exception.printStackTrace();
         }
     }
 

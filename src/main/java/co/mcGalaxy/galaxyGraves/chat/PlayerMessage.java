@@ -9,7 +9,7 @@ import java.io.File;
 public class PlayerMessage {
 
     public static void sendPlayerMessageWithoutConfig(Player player, String key) {
-        String message = HexUtils.colorify("&f[<g:#03fcfc:#1703fc>Galaxy Graves&f] &7> " + key);
+        String message = HexUtils.colorify("#ba63f7[<g:#0099ff:#EEEEEE>Galaxy Graves#ba63f7] #121212> " + key);
         player.sendMessage(message);
     }
 

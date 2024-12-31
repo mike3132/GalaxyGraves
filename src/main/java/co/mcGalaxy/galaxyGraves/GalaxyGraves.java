@@ -7,6 +7,8 @@ import co.mcGalaxy.galaxyGraves.managers.GraveManager;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.File;
+
 public final class GalaxyGraves extends JavaPlugin {
 
     private static GalaxyGraves INSTANCE;
@@ -25,7 +27,6 @@ public final class GalaxyGraves extends JavaPlugin {
 
         // Config loader
         ConfigManager.MESSAGES.create();
-        ConfigManager.INVENTORIES.create();
         saveDefaultConfig();
     }
 
@@ -42,6 +43,7 @@ public final class GalaxyGraves extends JavaPlugin {
     private void registerCommands() {
         new GravesCommand();
     }
+
 
 
 }

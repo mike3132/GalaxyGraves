@@ -2,7 +2,7 @@ package co.mcGalaxy.galaxyGraves.events;
 
 import co.mcGalaxy.galaxyGraves.GalaxyGraves;
 import co.mcGalaxy.galaxyGraves.chat.PlayerMessage;
-import co.mcGalaxy.galaxyGraves.objects.Grave;
+import co.mcGalaxy.galaxyGraves.grave.Grave;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
@@ -14,6 +14,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPistonExtendEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
+import org.bukkit.inventory.ItemStack;
+
+import java.util.Objects;
 
 public class GraveEvent implements Listener {
 
@@ -55,6 +58,8 @@ public class GraveEvent implements Listener {
         }
         //TODO: Make this a config message
         PlayerMessage.sendPlayerMessageWithoutConfig(player, "&2Successfully found registered grave");
+        final ItemStack[] itemStacks = foundGrave.getItemStacks();
+        player.getInventory().setContents(itemStacks);
     }
 
     @EventHandler

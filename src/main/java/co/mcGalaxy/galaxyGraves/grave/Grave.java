@@ -1,7 +1,10 @@
-package co.mcGalaxy.galaxyGraves.objects;
+package co.mcGalaxy.galaxyGraves.grave;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
 
 import java.util.UUID;
 
@@ -11,14 +14,15 @@ public class Grave {
     private final Npc npc;
     private final Model model;
     private final UUID uuid;
-    private final Grave grave;
+    private final ItemStack[] itemStacks;
+
 
     public Grave(Player player, UUID uuid) {
         this.location = player.getLocation();
         this.npc = new Npc(player, player.getLocation(), player.getName(), player.getName());
         this.model = new Model(player.getLocation());
         this.uuid = player.getUniqueId();
-        grave = this;
+        this.itemStacks = player.getInventory().getContents();
     }
 
     public void create() {
@@ -47,7 +51,7 @@ public class Grave {
         return uuid;
     }
 
-    public Grave getGrave() {
-        return grave;
+    public ItemStack[] getItemStacks() {
+        return itemStacks;
     }
 }
