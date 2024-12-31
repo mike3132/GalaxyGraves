@@ -4,20 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="61cd3807-1bff-4c1e-bf53-db81f678a80a" name="Changes" comment="I don't remember what I changed tbh">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/GalaxyGraves.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/GalaxyGraves.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/chat/ConsoleMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/chat/ConsoleMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/chat/PlayerMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/chat/PlayerMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/commands/GravesCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/commands/GravesCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/configs/ConfigManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/configs/ConfigManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/events/GraveEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/events/GraveEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/inventory/PlayerInventories.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/managers/GraveManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/managers/GraveManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/objects/Grave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/grave/Grave.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/objects/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/grave/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/objects/Npc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/grave/Npc.java" afterDir="false" />
-    </list>
+    <list default="true" id="61cd3807-1bff-4c1e-bf53-db81f678a80a" name="Changes" comment="Added inventory injection into the grave. And added the inventories to the graves backup file" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -248,7 +235,15 @@
       <option name="project" value="LOCAL" />
       <updated>1735478966664</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Added inventory injection into the grave. And added the inventories to the graves backup file">
+      <option name="closed" value="true" />
+      <created>1735604985557</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1735604985557</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -258,6 +253,7 @@
     <MESSAGE value="Organizing" />
     <MESSAGE value="Refactoring some stuff. I broke the webhook so alot didn't come through" />
     <MESSAGE value="I don't remember what I changed tbh" />
-    <option name="LAST_COMMIT_MESSAGE" value="I don't remember what I changed tbh" />
+    <MESSAGE value="Added inventory injection into the grave. And added the inventories to the graves backup file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added inventory injection into the grave. And added the inventories to the graves backup file" />
   </component>
 </project>
