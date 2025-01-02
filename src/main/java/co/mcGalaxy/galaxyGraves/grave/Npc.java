@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
+import net.kyori.adventure.text.Component;
 import net.minecraft.network.Connection;
 import net.minecraft.network.protocol.PacketFlow;
 import net.minecraft.network.protocol.game.ClientboundPlayerInfoUpdatePacket;
@@ -16,7 +17,9 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.network.CommonListenerCookie;
 import net.minecraft.server.network.ServerGamePacketListenerImpl;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.Pose;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.craftbukkit.entity.CraftPlayer;
 import org.bukkit.entity.Player;
@@ -48,7 +51,6 @@ public class Npc {
         ServerLevel level = sp.serverLevel();
         GameProfile profile = new GameProfile(UUID.randomUUID(), name);
 
-        //TODO: Skin stuff to be implemented
         String[] name = getSkin(this.player, this.skin);
         profile.getProperties().put("textures", new Property("textures", name[0], name[1]));
 
@@ -67,14 +69,17 @@ public class Npc {
 
         serverPlayer.setPose(Pose.SLEEPING);
 
+        level.addFreshEntity(serverPlayer);
+
         gamePacketListener.send(serverPlayer.getAddEntityPacket(serverEntity));
         gamePacketListener.send(new ClientboundSetEntityDataPacket(serverPlayer.getId(), serverPlayer.getEntityData().packAll()));
         this.serverPlayer = serverPlayer;
     }
 
     public void remove(Location location) {
-        ServerPlayer onlinePlayers = ((CraftPlayer) player).getHandle();
-        onlinePlayers.connection.send(new ClientboundRemoveEntitiesPacket(serverPlayer.getId()));
+        ServerPlayer onlinePlayer = ((CraftPlayer) player).getHandle();
+        serverPlayer.remove(Entity.RemovalReason.DISCARDED);
+        onlinePlayer.connection.send(new ClientboundRemoveEntitiesPacket(serverPlayer.getId()));
     }
 
     private String[] getSkin(Player player, String name) {
@@ -90,17 +95,17 @@ public class Npc {
 
             String texture = property.get("value").getAsString();
             String signature = property.get("signature").getAsString();
-            return new String[] {
+            return new String[]{
                     texture,
                     signature
             };
-        }catch (Exception e) {
+        } catch (Exception e) {
             ServerPlayer serverPlayer = ((CraftPlayer) player).getHandle();
             GameProfile profile = serverPlayer.getGameProfile();
             Property property = profile.getProperties().get("textures").iterator().next();
             String texture = property.value();
             String signature = property.signature();
-            return new String[] {
+            return new String[]{
                     texture,
                     signature
             };

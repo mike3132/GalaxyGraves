@@ -3,7 +3,9 @@ package co.mcGalaxy.galaxyGraves.events;
 import co.mcGalaxy.galaxyGraves.GalaxyGraves;
 import co.mcGalaxy.galaxyGraves.chat.PlayerMessage;
 import co.mcGalaxy.galaxyGraves.grave.Grave;
+import io.papermc.paper.event.packet.PlayerChunkLoadEvent;
 import org.bukkit.Bukkit;
+import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
@@ -15,8 +17,6 @@ import org.bukkit.event.block.BlockPistonExtendEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.inventory.ItemStack;
-
-import java.util.Objects;
 
 public class GraveEvent implements Listener {
 
@@ -33,6 +33,7 @@ public class GraveEvent implements Listener {
         grave.create();
         this.plugin.graveManager.add(grave);
     }
+
 
     @EventHandler
     public void onPlayerClick(PlayerInteractEntityEvent pc) {
@@ -72,8 +73,6 @@ public class GraveEvent implements Listener {
             Bukkit.broadcastMessage("Piston within 10 of grave, so canceling the event");
             pe.setCancelled(true);
         }
-
-
     }
 
 }

@@ -44,7 +44,7 @@ public class GravesCommand implements CommandExecutor {
             grave.create();
             GalaxyGraves.getInstance().graveManager.add(grave);
             GalaxyGraves.getInstance().graveManager.saveGrave(player.getUniqueId(), grave);
-            PlayerMessage.sendPlayerMessageWithoutConfig(player, "&eSpawning shit");
+            PlayerMessage.sendPlayerMessageWithoutConfig(player, "&eSpawning grave");
             return false;
         }
 
@@ -59,7 +59,7 @@ public class GravesCommand implements CommandExecutor {
             if (foundGrave != null) {
                 GalaxyGraves.getInstance().graveManager.remove(foundGrave);
                 foundGrave.remove();
-                PlayerMessage.sendPlayerMessageWithoutConfig(player, "&dRemoving shit");
+                PlayerMessage.sendPlayerMessageWithoutConfig(player, "&dRemoving grave");
                 return false;
             }
             PlayerMessage.sendPlayerMessageWithoutConfig(player, "&dNo graves nearby to remove");

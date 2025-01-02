@@ -3,7 +3,9 @@ package co.mcGalaxy.galaxyGraves;
 import co.mcGalaxy.galaxyGraves.commands.GravesCommand;
 import co.mcGalaxy.galaxyGraves.configs.ConfigManager;
 import co.mcGalaxy.galaxyGraves.events.GraveEvent;
+import co.mcGalaxy.galaxyGraves.grave.ProtocolLibListener;
 import co.mcGalaxy.galaxyGraves.managers.GraveManager;
+import com.comphenix.protocol.events.PacketListener;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -28,6 +30,8 @@ public final class GalaxyGraves extends JavaPlugin {
         // Config loader
         ConfigManager.MESSAGES.create();
         saveDefaultConfig();
+
+       // new ProtocolLibListener(this);
     }
 
     @Override
