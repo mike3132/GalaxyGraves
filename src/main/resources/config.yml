@@ -12,7 +12,25 @@ ConfigVersion: '1.0'
 #✍✍✍✍✍Permissions✍✍✍✍✍
 
 #####You can Modify the following how you wish#####
+#Should the plugin create a custom model for the grave using a model engine model.
+#This requires model engine to be installed and for the model to be setup.
+Model-Engine-Grave: false
 
+#If you are choosing to use model engine please supply the models name here
+Model-Engine-Grave-Name: "devstone"
+
+#If you want the plugin to send a message when a player dies.
+#You can configure how this message looks in the messages.yml
+Player-Death-Message: true
+
+#If you want the plugin to send a message to the player when their items are returned from the grave
+#You can configure how this message looks in the messages.yml
+Grave-Return-Item-Message: true
+
+#The distance from a grave in which pistons are disabled. (This is a square root, so think of it as a big cube)
+#WARNING: IF YOU SET THIS TO LESS THAN 3 AND A PLAYER USES A PISTON TO MOVE A GRAVE THE PLUGIN MAY NO LONGER REGISTER THE GRAVE.
+#If this happens the only way to remove the grave is for an admin to force delete the grave from memory using /graves admin <playername> ForceRemove
+Grave-Distance-To-Piston: 10
 
 
 #See messages.yml for all configurable plugin messages

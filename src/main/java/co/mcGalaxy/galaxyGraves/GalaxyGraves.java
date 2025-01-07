@@ -1,6 +1,7 @@
 package co.mcGalaxy.galaxyGraves;
 
-import co.mcGalaxy.galaxyGraves.commands.GravesCommand;
+import co.mcGalaxy.galaxyGraves.utils.HexUtils;
+import co.mcGalaxy.galaxyGraves.commands.GraveCommand;
 import co.mcGalaxy.galaxyGraves.configs.ConfigManager;
 import co.mcGalaxy.galaxyGraves.events.GraveEvent;
 import co.mcGalaxy.galaxyGraves.managers.GraveManager;
@@ -16,6 +17,7 @@ public final class GalaxyGraves extends JavaPlugin {
     public void onEnable() {
         INSTANCE = this;
         // Plugin startup logic
+        getServer().getConsoleSender().sendMessage(messageFormatter("&2Enabled"));
 
         // Event register
         Bukkit.getPluginManager().registerEvents(new GraveEvent(this), this);
@@ -27,11 +29,14 @@ public final class GalaxyGraves extends JavaPlugin {
         ConfigManager.MESSAGES.create();
         saveDefaultConfig();
 
+        // Api checker
+
     }
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+        getServer().getConsoleSender().sendMessage(messageFormatter("&4Disabled"));
 
     }
 
@@ -40,9 +45,11 @@ public final class GalaxyGraves extends JavaPlugin {
     }
 
     private void registerCommands() {
-        new GravesCommand();
+        new GraveCommand(this);
     }
 
-
+    private String messageFormatter(String key) {
+        return HexUtils.colorify("#ba63f7[<g:#0099ff:#EEEEEE>Galaxy Graves#ba63f7] #121212> " + key);
+    }
 
 }

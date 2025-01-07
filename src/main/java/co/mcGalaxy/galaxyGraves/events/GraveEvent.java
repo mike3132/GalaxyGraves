@@ -3,14 +3,9 @@ package co.mcGalaxy.galaxyGraves.events;
 import co.mcGalaxy.galaxyGraves.GalaxyGraves;
 import co.mcGalaxy.galaxyGraves.chat.PlayerMessage;
 import co.mcGalaxy.galaxyGraves.grave.Grave;
-import io.papermc.paper.event.packet.PlayerChunkLoadEvent;
-import org.bukkit.Bukkit;
-import org.bukkit.Chunk;
-import org.bukkit.Location;
+import org.bukkit.*;
 import org.bukkit.block.Block;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.Pig;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPistonExtendEvent;
@@ -21,6 +16,9 @@ import org.bukkit.inventory.ItemStack;
 public class GraveEvent implements Listener {
 
     GalaxyGraves plugin;
+    private final boolean playerDeathMessage = GalaxyGraves.getInstance().getConfig().getBoolean("Player-Death-Message");
+    private final boolean graveReturnItems = GalaxyGraves.getInstance().getConfig().getBoolean("Grave-Return-Item-Message");
+    private final int pistonDistance = GalaxyGraves.getInstance().getConfig().getInt("Grave-Distance-To-Piston");
 
     public GraveEvent(GalaxyGraves plugin) {
         this.plugin = plugin;
@@ -32,6 +30,13 @@ public class GraveEvent implements Listener {
         Grave grave = new Grave(player, player.getUniqueId());
         grave.create();
         this.plugin.graveManager.add(grave);
+        this.plugin.graveManager.saveGrave(player.getUniqueId(), grave);
+        if (playerDeathMessage) {
+            PlayerMessage.sendMessage(player, "Player-Death-Message");
+        }
+
+        grave.getLocation().getWorld().strikeLightningEffect(grave.getLocation());
+        pde.getDrops().clear();
     }
 
 
@@ -42,8 +47,9 @@ public class GraveEvent implements Listener {
         Location entityLocation = entity.getLocation();
         Grave foundGrave = null;
 
-        if (!(entity instanceof Pig)) return;
-        if (!this.plugin.graveManager.getGraves().containsColumn(entityLocation)) return;
+        if (!(entity instanceof Interaction)) return;
+
+        if (!GalaxyGraves.getInstance().graveManager.getGraves().containsColumn(entityLocation)) return;
 
         for (Grave grave : this.plugin.graveManager.getGraves().values()) {
             if (entityLocation.distance(grave.getLocation()) < 1) {
@@ -53,14 +59,18 @@ public class GraveEvent implements Listener {
         }
 
         if (foundGrave == null) {
-            //TODO: Keep this internal but make it look better
-            PlayerMessage.sendPlayerMessageWithoutConfig(player, "&4ERROR: &cThis isn't registered as a grave");
+            PlayerMessage.sendPlayerMessageWithoutConfig(player, "&4ERROR: &cI do not see this a registered grave");
+            PlayerMessage.sendPlayerMessageWithoutConfig(player, "&bIf this is a grave then please contact your servers support system");
             return;
         }
         //TODO: Make this a config message
-        PlayerMessage.sendPlayerMessageWithoutConfig(player, "&2Successfully found registered grave");
+        if (graveReturnItems) {
+            PlayerMessage.sendMessage(player, "Grave-Return-Item-Message");
+        }
         final ItemStack[] itemStacks = foundGrave.getItemStacks();
         player.getInventory().setContents(itemStacks);
+        foundGrave.remove();
+        this.plugin.graveManager.remove(foundGrave);
     }
 
     @EventHandler
@@ -68,9 +78,10 @@ public class GraveEvent implements Listener {
         Block block = pe.getBlock();
 
         for (Grave grave : this.plugin.graveManager.getGraves().values()) {
-            if (block.getLocation().distance(grave.getLocation()) > 10) continue;
-            //TODO: Make this a config message
-            Bukkit.broadcastMessage("Piston within 10 of grave, so canceling the event");
+            if (block.getLocation().distance(grave.getLocation()) > pistonDistance) continue;
+            Player player = Bukkit.getPlayer(grave.getUuid());
+            if (player == null) return;
+            PlayerMessage.sendMessage(player, "Grave-Piston-Disabled-Message");
             pe.setCancelled(true);
         }
     }

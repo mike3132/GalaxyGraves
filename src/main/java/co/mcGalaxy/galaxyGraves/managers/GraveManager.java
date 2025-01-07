@@ -6,7 +6,6 @@ import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.World;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
@@ -37,7 +36,7 @@ public class GraveManager {
     }
 
     public void saveGrave(UUID uuid, Grave grave) {
-        String fileName = "Graves/" + uuid.toString() + ".yml";
+        String fileName = "Graves-Backups/" + uuid.toString() + ".yml";
         File file = new File(GalaxyGraves.getInstance().getDataFolder(), fileName);
         try {
 
@@ -63,8 +62,6 @@ public class GraveManager {
             configuration.set(identifier + ".player-xp", player.getExp());
             configuration.set(identifier + ".player-inventory",
                     Arrays.stream(player.getInventory().getContents()).filter(Objects::nonNull).toList());
-            // vault balance
-            // vault rank
             configuration.save(file);
         } catch (IOException e) {
             e.printStackTrace();

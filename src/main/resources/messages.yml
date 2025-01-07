@@ -4,10 +4,13 @@
 #                                                💻Resource Rush Messages💻
 #                                                 🖥🖥🖥🖥🖥🖥🖥🖥🖥🖥🖥🖥🖥
 
-#✍✍✍✍ This file handles all messages for the plugin including the prefix.✍✍✍✍
-#✍✍✍✍ You can change anything here to be whatever custom stuff you want.✍✍✍✍
+#✍✍✍✍ This file handles all messages for the plugin including the prefix. ✍✍✍✍
+#✍✍✍✍ You can change anything here to be whatever custom stuff you want. ✍✍✍✍
+#✍✍✍✍ Feel free to use standard & color codes, or Hex color codes ✍✍✍✍
+#✍✍✍✍ If you would like to use a gradient between 2 colors please use the syntax below ✍✍✍✍
+#✍✍✍✍ Gradient Example: <g:#0099ff:#EEEEEE> ✍✍✍✍
 #☠☠☠☠ DO NOT CHANGE THE "Messages:" line as this will break the plugin.☠☠☠☠
-#☠☠☠☠ ALL messages must have single quotes '' as seen in this default config.☠☠☠☠
+
 
 #📝📝📝📝 Placeholders 📝📝📝📝
 
@@ -16,7 +19,7 @@
 #Plugin prefix is sent before ALL messages in the plugin.
 Messages:
   #Plugin prefix for all messages.
-  Prefix: '&f[<g:#03fcfc:#1703fc>Galaxy Graves&f] &7> '
+  Prefix: '#ba63f7[<g:#0099ff:#EEEEEE>Galaxy Graves#ba63f7] #121212> '
 
   #➳➳➳➳➳ Console Messages ➳➳➳➳➳
   #Players only command
@@ -27,9 +30,32 @@ Messages:
   No-Permission: '&4ERROR: &cYou do not have permission to use this command'
 
   #Not enough command arguments
-  Not-Enough-Args: "&4Error: &cYou have not supplied enough arguments for this command"
+  Not-Enough-Args: "&4ERROR: &cYou have not supplied enough arguments for this command"
+
+  #Not the right command arguments
+  Not-Right-Args: "&4ERROR: &cYou haven't supplied a correct arguement"
+
+
+  #The targeted player wasn't found
+  Target-Player-Not-Found: "&4ERROR: &cThe targeted player wasn't found please try again"
+
 
   #➳➳➳➳➳ Player Messages ➳➳➳➳➳
+  #Sent to the player if they have an active grave and do /grave (Put a color code at the end to color the location)
+  Grave-Active: "&3Grave found at &f"
+
+  #Sent to the player if they use /grave and don't have any active graves
+  No-Active-Grave: "&4ERROR: &cYou do not have any active graves"
+
+  #Sent to the player when they die, You can disable this being sent in the config.yml
+  Player-Death-Message: "&bOh no you have died, &3A grave has been created for you here"
+
+  #Sent to the player when they get their items back from the grave, You can disable this being sent in the config.yml
+  Grave-Return-Item-Message: "&2Hey you made it back to your grave, &aHere is all of your items back"
+
+  #Sent to the player if they try and use a piston within a certain distance of a grave.
+  #You can configure the distance in the config.yml
+  Grave-Piston-Disabled-Message: "&4ERROR: &cThere is a grave to close to this piston, please claim the grave to enable pistons"
 
 
 

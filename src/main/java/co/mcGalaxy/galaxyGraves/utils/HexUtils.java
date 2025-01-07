@@ -1,4 +1,4 @@
-package co.mcGalaxy.galaxyGraves.chat;
+package co.mcGalaxy.galaxyGraves.utils;
 
 import net.md_5.bungee.api.ChatColor;
 

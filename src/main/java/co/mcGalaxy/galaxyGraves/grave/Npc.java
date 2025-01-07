@@ -4,7 +4,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
-import net.kyori.adventure.text.Component;
 import net.minecraft.network.Connection;
 import net.minecraft.network.protocol.PacketFlow;
 import net.minecraft.network.protocol.game.ClientboundPlayerInfoUpdatePacket;
@@ -19,7 +18,6 @@ import net.minecraft.server.network.CommonListenerCookie;
 import net.minecraft.server.network.ServerGamePacketListenerImpl;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.Pose;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.craftbukkit.entity.CraftPlayer;
 import org.bukkit.entity.Player;
@@ -55,7 +53,6 @@ public class Npc {
         profile.getProperties().put("textures", new Property("textures", name[0], name[1]));
 
         ServerPlayer serverPlayer = new ServerPlayer(server, level, profile, ClientInformation.createDefault());
-        serverPlayer.absMoveTo(location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
 
         serverPlayer.connection = new ServerGamePacketListenerImpl(server, new Connection(PacketFlow.SERVERBOUND),
                 serverPlayer, CommonListenerCookie.createInitial(profile, false));
@@ -65,6 +62,9 @@ public class Npc {
 
         }, Set.of());
 
+        serverPlayer.absMoveTo(location.getX(), location.getY(), location.getZ(),
+                (float) Math.toRadians(location.getYaw()), (float) Math.toRadians(location.getPitch()));
+
         gamePacketListener.send(new ClientboundPlayerInfoUpdatePacket(ClientboundPlayerInfoUpdatePacket.Action.ADD_PLAYER, serverPlayer));
 
         serverPlayer.setPose(Pose.SLEEPING);
@@ -73,6 +73,7 @@ public class Npc {
 
         gamePacketListener.send(serverPlayer.getAddEntityPacket(serverEntity));
         gamePacketListener.send(new ClientboundSetEntityDataPacket(serverPlayer.getId(), serverPlayer.getEntityData().packAll()));
+
         this.serverPlayer = serverPlayer;
     }
 
