@@ -21,10 +21,18 @@ public class PlayerMessage {
         player.sendMessage(HexUtils.colorify(message));
     }
 
-    public static void senLocationMessage(Player player, String key, String location) {
+    public static void sendLocationMessage(Player player, String key, String location) {
         File messagesConfig = new File(GalaxyGraves.getInstance().getDataFolder(), "messages.yml");
         YamlConfiguration configMessages = YamlConfiguration.loadConfiguration(messagesConfig);
         String message = configMessages.getString("Messages.Prefix") + configMessages.getString("Messages." + key) + location;
         player.sendMessage(HexUtils.colorify(message));
     }
+
+    public static void sendMessageWithTarget(Player player, String key, String target) {
+        File messagesConfig = new File((GalaxyGraves.getInstance().getDataFolder()), "messages.yml");
+        YamlConfiguration configMessages = YamlConfiguration.loadConfiguration(messagesConfig);
+        String message = configMessages.getString("Messages.Prefix") + configMessages.getString("Messages." + key) + target;
+        player.sendMessage(HexUtils.colorify(message));
+    }
+
 }

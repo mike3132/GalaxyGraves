@@ -63,7 +63,6 @@ public class GraveEvent implements Listener {
             PlayerMessage.sendPlayerMessageWithoutConfig(player, "&bIf this is a grave then please contact your servers support system");
             return;
         }
-        //TODO: Make this a config message
         if (graveReturnItems) {
             PlayerMessage.sendMessage(player, "Grave-Return-Item-Message");
         }

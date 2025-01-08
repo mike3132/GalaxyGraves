@@ -33,7 +33,7 @@ Messages:
   Not-Enough-Args: "&4ERROR: &cYou have not supplied enough arguments for this command"
 
   #Not the right command arguments
-  Not-Right-Args: "&4ERROR: &cYou haven't supplied a correct arguement"
+  Not-Right-Args: "&4ERROR: &cYou haven't supplied a correct argument"
 
 
   #The targeted player wasn't found
@@ -60,6 +60,11 @@ Messages:
 
 
   #➳➳➳➳➳ Admin Messages ➳➳➳➳➳
+  #Sent to the admin if the targeted player doesn't have any active graves
+  Admin-Target-No-Graves: "&4ERROR: &cThis player doesn't have active graves"
+
+  #Sent to the admin when they force remove a target players grave (Put a color code at the end to color the target players name)
+  Admin-Force-Remove-Grave: "&2Successfully removed a grave for &3"
 
 
 

@@ -5,6 +5,7 @@ import co.mcGalaxy.galaxyGraves.chat.ConsoleMessage;
 import co.mcGalaxy.galaxyGraves.chat.PlayerMessage;
 import co.mcGalaxy.galaxyGraves.configs.ConfigManager;
 import co.mcGalaxy.galaxyGraves.grave.Grave;
+import co.mcGalaxy.galaxyGraves.utils.LocationUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -14,6 +15,7 @@ import org.bukkit.entity.Player;
 public class GraveCommand implements CommandExecutor {
 
     private final GalaxyGraves plugin;
+    private final LocationUtils locationUtils = new LocationUtils();
 
     public GraveCommand(GalaxyGraves plugin) {
         this.plugin = plugin;
@@ -43,13 +45,7 @@ public class GraveCommand implements CommandExecutor {
                 PlayerMessage.sendMessage(player, "No-Active-Grave");
                 return false;
             }
-            String worldName = foundGrave.getLocation().getWorld().getName();
-            int x = foundGrave.getLocation().getBlockX();
-            int y = foundGrave.getLocation().getBlockY();
-            int z = foundGrave.getLocation().getBlockZ();
-            String message = worldName + " " + x + " " + y + " " + z;
-
-            PlayerMessage.senLocationMessage(player, "Grave-Active", message);
+            PlayerMessage.sendLocationMessage(player, "Grave-Active", locationUtils.formatLocation(foundGrave.getLocation()));
             return false;
         }
 
@@ -88,17 +84,19 @@ public class GraveCommand implements CommandExecutor {
                     return false;
                 }
                 if (args[2].equalsIgnoreCase("ListActive")) {
+                    //TODO: Fix location message printing all fucky cause bukkit can eat my asshole
                     Grave foundGrave = null;
                     for (Grave graves : plugin.graveManager.getGraves().values()) {
                         foundGrave = graves;
                         break;
                     }
                     if (foundGrave == null) {
-                        PlayerMessage.sendPlayerMessageWithoutConfig(player, "&4ERROR: &cThis player doesn't have active graves");
+                        PlayerMessage.sendMessage(player, "Admin-Target-No-Graves");
                         return false;
                     }
                     if (foundGrave.getUuid() == target.getUniqueId()) {
-                        PlayerMessage.sendPlayerMessageWithoutConfig(player, foundGrave.getLocation().toString());
+                        PlayerMessage.sendLocationMessage(player, "Grave-Active", locationUtils.formatLocation(foundGrave.getLocation()));
+                        return false;
                     }
                     return false;
                 }
@@ -110,13 +108,13 @@ public class GraveCommand implements CommandExecutor {
                         break;
                     }
                     if (foundGrave == null) {
-                        PlayerMessage.sendPlayerMessageWithoutConfig(player, "&4ERROR: &cThis player doesn't have active graves");
+                        PlayerMessage.sendMessage(player, "Admin-Target-No-Graves");
                         return false;
                     }
                     if (foundGrave.getUuid() == target.getUniqueId()) {
                         foundGrave.remove();
                         plugin.graveManager.remove(foundGrave);
-                        PlayerMessage.sendPlayerMessageWithoutConfig(player, "&2Successfully ForceRemoved &b" + target.getName() + "'s &3Grave");
+                        PlayerMessage.sendMessageWithTarget(player, "Admin-Force-Remove-Grave", target.getName());
                     }
                 }
 
@@ -130,7 +128,6 @@ public class GraveCommand implements CommandExecutor {
                 PlayerMessage.sendPlayerMessageWithoutConfig(player, "&2Grave created");
                 break;
             default:
-
                 PlayerMessage.sendMessage(player, "Not-Right-Args");
                 break;
         }

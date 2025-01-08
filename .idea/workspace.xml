@@ -4,20 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="61cd3807-1bff-4c1e-bf53-db81f678a80a" name="Changes" comment="Made npc's persistant on player teleport.">
+    <list default="true" id="61cd3807-1bff-4c1e-bf53-db81f678a80a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/GalaxyGraves.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/GalaxyGraves.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/chat/ConsoleMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/chat/ConsoleMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/chat/HexUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/utils/HexUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/chat/PlayerMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/chat/PlayerMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/commands/GravesCommand.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/events/GraveEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/events/GraveEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/grave/Grave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/grave/Grave.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/grave/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/grave/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/grave/Npc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/grave/Npc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/managers/GraveManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/managers/GraveManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/commands/GraveCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/commands/GraveCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/messages.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -283,7 +273,15 @@
       <option name="project" value="LOCAL" />
       <updated>1735838058569</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="I should really do these more often. I changed quite a bit + added custom Entity detection for graves, and added most of the configurable messages and actions">
+      <option name="closed" value="true" />
+      <created>1736219645878</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1736219645878</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -295,6 +293,7 @@
     <MESSAGE value="I don't remember what I changed tbh" />
     <MESSAGE value="Added inventory injection into the grave. And added the inventories to the graves backup file" />
     <MESSAGE value="Made npc's persistant on player teleport." />
-    <option name="LAST_COMMIT_MESSAGE" value="Made npc's persistant on player teleport." />
+    <MESSAGE value="I should really do these more often. I changed quite a bit + added custom Entity detection for graves, and added most of the configurable messages and actions" />
+    <option name="LAST_COMMIT_MESSAGE" value="I should really do these more often. I changed quite a bit + added custom Entity detection for graves, and added most of the configurable messages and actions" />
   </component>
 </project>
