@@ -70,6 +70,7 @@ public class Npc {
         serverPlayer.setPose(Pose.SLEEPING);
 
         level.addFreshEntity(serverPlayer);
+        serverPlayer.setInvulnerable(true);
 
         gamePacketListener.send(serverPlayer.getAddEntityPacket(serverEntity));
         gamePacketListener.send(new ClientboundSetEntityDataPacket(serverPlayer.getId(), serverPlayer.getEntityData().packAll()));

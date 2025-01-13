@@ -5,6 +5,7 @@ import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class Grave {
@@ -15,6 +16,7 @@ public class Grave {
     private final Entity entity;
     private final UUID uuid;
     private final ItemStack[] itemStacks;
+    private LocalDateTime localDateTime;
 
     private final boolean useModelEngine = GalaxyGraves.getInstance().getConfig().getBoolean("Model-Engine-Grave");
 
@@ -27,6 +29,7 @@ public class Grave {
         this.entity = new Entity(player.getLocation());
         this.uuid = player.getUniqueId();
         this.itemStacks = player.getInventory().getContents();
+        this.localDateTime = null;
     }
 
     public void create() {
@@ -35,6 +38,8 @@ public class Grave {
             this.model.spawn(model.getLocation());
         }
         this.entity.spawn(entity.getLocation());
+
+        this.localDateTime = LocalDateTime.now();
     }
 
     public void remove() {
@@ -67,5 +72,9 @@ public class Grave {
 
     public ItemStack[] getItemStacks() {
         return itemStacks;
+    }
+
+    public LocalDateTime getLocalDateTime() {
+        return localDateTime;
     }
 }

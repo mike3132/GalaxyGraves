@@ -15,7 +15,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class GraveEvent implements Listener {
 
-    GalaxyGraves plugin;
+    private final GalaxyGraves plugin;
     private final boolean playerDeathMessage = GalaxyGraves.getInstance().getConfig().getBoolean("Player-Death-Message");
     private final boolean graveReturnItems = GalaxyGraves.getInstance().getConfig().getBoolean("Grave-Return-Item-Message");
     private final int pistonDistance = GalaxyGraves.getInstance().getConfig().getInt("Grave-Distance-To-Piston");
@@ -49,7 +49,7 @@ public class GraveEvent implements Listener {
 
         if (!(entity instanceof Interaction)) return;
 
-        if (!GalaxyGraves.getInstance().graveManager.getGraves().containsColumn(entityLocation)) return;
+        if (!this.plugin.graveManager.getGraves().containsColumn(entityLocation)) return;
 
         for (Grave grave : this.plugin.graveManager.getGraves().values()) {
             if (entityLocation.distance(grave.getLocation()) < 1) {
@@ -60,7 +60,7 @@ public class GraveEvent implements Listener {
 
         if (foundGrave == null) {
             PlayerMessage.sendPlayerMessageWithoutConfig(player, "&4ERROR: &cI do not see this a registered grave");
-            PlayerMessage.sendPlayerMessageWithoutConfig(player, "&bIf this is a grave then please contact your servers support system");
+            PlayerMessage.sendPlayerMessageWithoutConfig(player, "&bIf you believe this to be a grave then please contact your servers support system");
             return;
         }
         if (graveReturnItems) {

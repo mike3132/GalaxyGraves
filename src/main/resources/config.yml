@@ -32,6 +32,16 @@ Grave-Return-Item-Message: true
 #If this happens the only way to remove the grave is for an admin to force delete the grave from memory using /graves admin <playername> ForceRemove
 Grave-Distance-To-Piston: 10
 
+#How long should a grave last before it's automatically removed from the world?
+#This is in ticks, which means 20 = 1 second (6000 = 5 minutes)
+Grave-Lifetime: 1200
+
+#If you want the plugin to send a message to the player when their grave expires.
+#You can configure how this messages looks in the messages.yml
+Player-Grave-Expire-Message: true
+
+
+
 
 #See messages.yml for all configurable plugin messages
 #♏ If you have any questions please join my discord, open a support ticket and @Mike3132
