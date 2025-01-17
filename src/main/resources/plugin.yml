@@ -6,7 +6,7 @@ softdepend:
   - PlaceholderAPI
 commands:
   Graves:
-    permission: GalaxyGraves.Command
+    permission: GalaxyGraves.Command.Grave
     description: Main plugin command
     aliases:
       - grave

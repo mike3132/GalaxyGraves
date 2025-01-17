@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="61cd3807-1bff-4c1e-bf53-db81f678a80a" name="Changes" comment="Added scheduler for automatic grave removal">
+    <list default="true" id="61cd3807-1bff-4c1e-bf53-db81f678a80a" name="Changes" comment="Added tab complete for commands. Added admin recover command for backups. Fixed npc's not spawning for all online players.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/commands/GraveCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/commands/GraveCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/events/GraveEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/events/GraveEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/grave/Grave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/grave/Grave.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/grave/Npc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/grave/Npc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/managers/GraveManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/managers/GraveManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/utils/SchedulerUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/mcGalaxy/galaxyGraves/utils/SchedulerUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -303,7 +303,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736739103661</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Added tab complete for commands. Added admin recover command for backups. Fixed npc's not spawning for all online players.">
+      <option name="closed" value="true" />
+      <created>1737117902911</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1737117902911</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -318,6 +326,7 @@
     <MESSAGE value="I should really do these more often. I changed quite a bit + added custom Entity detection for graves, and added most of the configurable messages and actions" />
     <MESSAGE value="Finished setting up configurable messages in messages.yml" />
     <MESSAGE value="Added scheduler for automatic grave removal" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added scheduler for automatic grave removal" />
+    <MESSAGE value="Added tab complete for commands. Added admin recover command for backups. Fixed npc's not spawning for all online players." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added tab complete for commands. Added admin recover command for backups. Fixed npc's not spawning for all online players." />
   </component>
 </project>

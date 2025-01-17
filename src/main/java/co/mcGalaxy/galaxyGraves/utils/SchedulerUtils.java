@@ -8,18 +8,20 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 public class SchedulerUtils {
 
     private final BukkitTask task;
+    private final int graveLifetime = GalaxyGraves.getInstance().getConfig().getInt("Grave-Lifetime");
     private final boolean sendMessage = GalaxyGraves.getInstance().getConfig().getBoolean("Player-Grave-Expire-Message");
 
     public SchedulerUtils(GalaxyGraves plugin) {
-        int graveLifetime = GalaxyGraves.getInstance().getConfig().getInt("Grave-Lifetime");
-        this.task = Bukkit.getScheduler().runTaskTimer(plugin, this::graveTask, 0, graveLifetime);
+        this.task = Bukkit.getScheduler().runTaskTimer(plugin, this::graveTask, 0, 20);
     }
 
     private void graveTask() {
+
         for (Grave graves : GalaxyGraves.getInstance().graveManager.getGraves().values()) {
             handleGrave(graves);
             break;
@@ -34,19 +36,22 @@ public class SchedulerUtils {
         LocalDateTime currentTime = LocalDateTime.now();
         if (!currentTime.isAfter(grave.getLocalDateTime())) return;
 
-        if (sendMessage) {
-            Player player = Bukkit.getPlayer(grave.getUuid());
-            if (player == null) return;
-            PlayerMessage.sendMessage(player, "Grave-Expire-Message");
-        }
+        if (ChronoUnit.MINUTES.between(grave.getLocalDateTime(), currentTime) >= graveLifetime) {
 
-        grave = null;
-        for (Grave graves : GalaxyGraves.getInstance().graveManager.getGraves().values()) {
-            grave = graves;
+            if (sendMessage) {
+                Player player = Bukkit.getPlayer(grave.getUuid());
+                if (player == null) return;
+                PlayerMessage.sendMessage(player, "Grave-Expire-Message");
+            }
+
+            grave = null;
+            for (Grave graves : GalaxyGraves.getInstance().graveManager.getGraves().values()) {
+                grave = graves;
+            }
+            if (grave == null) return;
+            grave.remove();
+            GalaxyGraves.getInstance().graveManager.remove(grave);
         }
-        if (grave == null) return;
-        grave.remove();
-        GalaxyGraves.getInstance().graveManager.remove(grave);
     }
 
 }

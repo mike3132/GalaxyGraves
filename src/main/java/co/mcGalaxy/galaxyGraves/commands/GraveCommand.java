@@ -49,12 +49,6 @@ public class GraveCommand implements CommandExecutor {
             return false;
         }
 
-        if (!player.hasPermission("GalaxyGraves.Command")) {
-            PlayerMessage.sendPlayerMessageWithoutConfig(player, "&bGalaxy Graves written by &5Mike3132");
-            PlayerMessage.sendPlayerMessageWithoutConfig(player, "&bYou don't have permission for any sub commands");
-            return false;
-        }
-
         switch (args[0].toLowerCase()) {
             case "reload":
                 if (!player.hasPermission("GalaxyGraves.Command.Admin.Reload")) {

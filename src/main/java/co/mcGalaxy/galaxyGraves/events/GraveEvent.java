@@ -70,20 +70,26 @@ public class GraveEvent implements Listener {
                 PlayerMessage.sendMessage(player, "Grave-Not-Owned-By-Player");
                 return;
             }
-            Player target = Bukkit.getPlayer(foundGrave.getUuid());
 
-            PlayerMessage.sendMessageWithTarget(player, "Grave-Owned-by-Other-Message", target.getName());
-        }
+            ItemStack[] itemsList = foundGrave.getItemStacks();
 
-        if (graveReturnItemsMessage) {
-            PlayerMessage.sendMessage(player, "Grave-Return-Item-Message");
-        }
+            for (ItemStack itemStack : itemsList) {
+                if (itemStack == null || itemStack.getType().isAir()) continue;
+                player.getInventory().addItem(itemStack);
+            }
 
-        final ItemStack[] itemsList = foundGrave.getItemStacks();
+            if (player.getUniqueId() != foundGrave.getUuid()) {
+                Player target = Bukkit.getPlayer(foundGrave.getUuid());
 
-        for (Object itemObj : itemsList) {
-            if (!(itemObj instanceof ItemStack itemStack)) continue;
-            player.getInventory().addItem(itemStack);
+                PlayerMessage.sendMessageWithTarget(player, "Grave-Owned-by-Other-Message", target.getName());
+                foundGrave.remove();
+                this.plugin.graveManager.remove(foundGrave);
+                return;
+            }
+
+            if (graveReturnItemsMessage) {
+                PlayerMessage.sendMessage(player, "Grave-Return-Item-Message");
+            }
         }
 
         foundGrave.remove();

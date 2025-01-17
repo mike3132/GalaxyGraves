@@ -45,8 +45,8 @@ Grave-Return-Item-Message: true
 Grave-Distance-To-Piston: 10
 
 #How long should a grave last before it's automatically removed from the world?
-#This is in ticks, which means 20 = 1 second (6000 = 5 minutes)
-Grave-Lifetime: 1200
+#This is in minutes so 5 = 5 minutes.
+Grave-Lifetime: 5
 
 #If you want the plugin to send a message to the player when their grave expires.
 #You can configure how this messages looks in the messages.yml
