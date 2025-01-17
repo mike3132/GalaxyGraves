@@ -62,8 +62,12 @@ public class Grave {
         return model;
     }
 
-    public Entity getInteractEntity() {
+    public Entity getEntity() {
         return entity;
+    }
+
+    public boolean isUseModelEngine() {
+        return useModelEngine;
     }
 
     public UUID getUuid() {

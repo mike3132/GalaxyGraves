@@ -16,9 +16,10 @@ import org.bukkit.inventory.ItemStack;
 public class GraveEvent implements Listener {
 
     private final GalaxyGraves plugin;
-    private final boolean playerDeathMessage = GalaxyGraves.getInstance().getConfig().getBoolean("Player-Death-Message");
-    private final boolean graveReturnItems = GalaxyGraves.getInstance().getConfig().getBoolean("Grave-Return-Item-Message");
     private final int pistonDistance = GalaxyGraves.getInstance().getConfig().getInt("Grave-Distance-To-Piston");
+    private final boolean playerDeathMessage = GalaxyGraves.getInstance().getConfig().getBoolean("Player-Death-Message");
+    private final boolean graveReturnItemsMessage = GalaxyGraves.getInstance().getConfig().getBoolean("Grave-Return-Item-Message");
+    private final boolean playerClaimOther = GalaxyGraves.getInstance().getConfig().getBoolean("Player-Take-Others-Grave");
 
     public GraveEvent(GalaxyGraves plugin) {
         this.plugin = plugin;
@@ -63,11 +64,28 @@ public class GraveEvent implements Listener {
             PlayerMessage.sendPlayerMessageWithoutConfig(player, "&bIf you believe this to be a grave then please contact your servers support system");
             return;
         }
-        if (graveReturnItems) {
+
+        if (!playerClaimOther) {
+            if (player.getUniqueId() != foundGrave.getUuid() && !player.hasPermission("GalaxyGraves.Grave.Bypass")) {
+                PlayerMessage.sendMessage(player, "Grave-Not-Owned-By-Player");
+                return;
+            }
+            Player target = Bukkit.getPlayer(foundGrave.getUuid());
+
+            PlayerMessage.sendMessageWithTarget(player, "Grave-Owned-by-Other-Message", target.getName());
+        }
+
+        if (graveReturnItemsMessage) {
             PlayerMessage.sendMessage(player, "Grave-Return-Item-Message");
         }
-        final ItemStack[] itemStacks = foundGrave.getItemStacks();
-        player.getInventory().setContents(itemStacks);
+
+        final ItemStack[] itemsList = foundGrave.getItemStacks();
+
+        for (Object itemObj : itemsList) {
+            if (!(itemObj instanceof ItemStack itemStack)) continue;
+            player.getInventory().addItem(itemStack);
+        }
+
         foundGrave.remove();
         this.plugin.graveManager.remove(foundGrave);
     }

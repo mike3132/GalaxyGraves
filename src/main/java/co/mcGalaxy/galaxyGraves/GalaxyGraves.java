@@ -1,5 +1,6 @@
 package co.mcGalaxy.galaxyGraves;
 
+import co.mcGalaxy.galaxyGraves.commands.TabComplete;
 import co.mcGalaxy.galaxyGraves.events.EntityEvent;
 import co.mcGalaxy.galaxyGraves.utils.HexUtils;
 import co.mcGalaxy.galaxyGraves.commands.GraveCommand;
@@ -54,6 +55,7 @@ public final class GalaxyGraves extends JavaPlugin {
 
     private void registerCommands() {
         new GraveCommand(this);
+        new TabComplete();
     }
 
     private String messageFormatter(String key) {

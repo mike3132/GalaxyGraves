@@ -57,10 +57,11 @@ public class GraveCommand implements CommandExecutor {
 
         switch (args[0].toLowerCase()) {
             case "reload":
-                if (!player.hasPermission("GalaxyGraves.Command.Reload")) {
+                if (!player.hasPermission("GalaxyGraves.Command.Admin.Reload")) {
                     PlayerMessage.sendMessage(player, "No-Permission");
                     return false;
                 }
+
                 ConfigManager.reloadAll();
                 plugin.reloadConfig();
                 PlayerMessage.sendPlayerMessageWithoutConfig(player, "&2Config reloaded");
@@ -70,6 +71,7 @@ public class GraveCommand implements CommandExecutor {
                     PlayerMessage.sendMessage(player, "No-Permission");
                     return false;
                 }
+
                 if (args.length == 1) {
                     PlayerMessage.sendMessage(player, "Target-Player-Not-Supplied");
                     return false;
@@ -84,7 +86,11 @@ public class GraveCommand implements CommandExecutor {
                     return false;
                 }
                 if (args[2].equalsIgnoreCase("ListActive")) {
-                    //TODO: Fix location message printing all fucky cause bukkit can eat my asshole
+                    if (!player.hasPermission("GalaxyGraves.Admin.ListActive")) {
+                        PlayerMessage.sendMessage(player, "No-Permission");
+                        return false;
+                    }
+
                     Grave foundGrave = null;
                     for (Grave graves : plugin.graveManager.getGraves().values()) {
                         foundGrave = graves;
@@ -102,6 +108,10 @@ public class GraveCommand implements CommandExecutor {
                 }
 
                 if (args[2].equalsIgnoreCase("ForceRemove")) {
+                    if (!player.hasPermission("GalaxyGraves.Admin.ForceRemove")) {
+                        PlayerMessage.sendMessage(player, "No-Permission");
+                        return false;
+                    }
                     Grave foundGrave = null;
                     for (Grave graves : plugin.graveManager.getGraves().values()) {
                         foundGrave = graves;
@@ -116,16 +126,30 @@ public class GraveCommand implements CommandExecutor {
                         plugin.graveManager.remove(foundGrave);
                         PlayerMessage.sendMessageWithTarget(player, "Admin-Force-Remove-Grave", target.getName());
                     }
+                    return false;
                 }
 
-                break;
-            //TODO: Remove these development commands
-            case "spawn":
-                Grave grave = new Grave(player, player.getUniqueId());
-                grave.create();
-                plugin.graveManager.add(grave);
-                plugin.graveManager.saveGrave(player.getUniqueId(), grave);
-                PlayerMessage.sendPlayerMessageWithoutConfig(player, "&2Grave created");
+                if (args[2].equalsIgnoreCase("Recover")) {
+                    if (!player.hasPermission("GalaxyGraves.Admin.Recover")) {
+                        PlayerMessage.sendMessage(player, "No-Permission");
+                        return false;
+                    }
+                    if (args.length < 4) {
+                        PlayerMessage.sendPlayerMessageWithoutConfig(player, "You need to pick an grave index");
+                        return false;
+                    }
+                    int index;
+                    try {
+                        index = Integer.parseInt(args[3]);
+                    } catch (NumberFormatException e) {
+                        PlayerMessage.sendMessage(player, "Admin-Recover-String-In-Index");
+                        return false;
+                    }
+
+                    plugin.graveManager.loadBackups(player, target.getUniqueId(), index);
+                    return false;
+                }
+
                 break;
             default:
                 PlayerMessage.sendMessage(player, "Not-Right-Args");

@@ -57,10 +57,16 @@ Messages:
   #You can configure the distance in the config.yml
   Grave-Piston-Disabled-Message: "&4ERROR: &cThere is a grave to close to this piston, please claim the grave to enable pistons"
 
-  #Sent to the player if their grave expires before they claim it
+  #Sent to the player if their grave expires before they claim it.
   Grave-Expire-Message: "&4Sorry but you didn't make it back to your grave in time and it has expired"
 
+  #Sent to the player if they try and open another players grave.
+  #Notice: This doesn't play for anyone with the "GalaxyGraves.Grave.Bypass" permission, Such as staff
+  #You can configure wither or not players can take someone else's grave in the config.
+  Grave-Not-Owned-By-Player: "&4Sorry but you do not own this grave&7, &cYou cannot take another players grave"
 
+  #Sent to the player if they claim a grave that isn't owned by them. (Put a color code at the end to color the players name)
+  Grave-Owned-by-Other-Message: "&2You have claimed a grave that was owned by &3"
 
   #➳➳➳➳➳ Admin Messages ➳➳➳➳➳
   #Sent to the admin if the targeted player doesn't have any active graves
@@ -68,6 +74,20 @@ Messages:
 
   #Sent to the admin when they force remove a target players grave (Put a color code at the end to color the target players name)
   Admin-Force-Remove-Grave: "&2Successfully removed a grave for &3"
+
+  #Sent to the admin when they recover a players grave from a backup
+  Admin-Recover-Backup: "&2Successfully recovered a backup of the players grave. &3Please check your inventory for items"
+
+  #Sent to the admin when they recover a players grave from a backup and the grave index doesn't exist
+  Admin-Recover-Backup-Invalid-Index: "&4ERROR: &cInvalid Grave Index&7, &cNo backup found"
+
+  #Sent to the admin if they try and use a string instead of a number for the index
+  Admin-Recover-String-In-Index: "&4ERROR: &cYou must use a integer for the index"
+
+
+
+
+
 
 
 

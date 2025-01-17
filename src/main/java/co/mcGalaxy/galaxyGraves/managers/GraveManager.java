@@ -1,13 +1,16 @@
 package co.mcGalaxy.galaxyGraves.managers;
 
 import co.mcGalaxy.galaxyGraves.GalaxyGraves;
+import co.mcGalaxy.galaxyGraves.chat.PlayerMessage;
 import co.mcGalaxy.galaxyGraves.grave.Grave;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 import java.io.File;
 import java.io.IOException;
@@ -67,6 +70,38 @@ public class GraveManager {
             e.printStackTrace();
         }
     }
+
+    public void loadBackups(Player player, UUID uuid, int index) {
+        String fileName = "Graves-Backups/" + uuid.toString() + ".yml";
+        File file = new File(GalaxyGraves.getInstance().getDataFolder(), fileName);
+
+        YamlConfiguration configuration = YamlConfiguration.loadConfiguration(file);
+
+        List<String> keys = new ArrayList<>(configuration.getKeys(false));
+
+        if (index < 0 || index >= keys.size()) {
+            PlayerMessage.sendMessage(player, "Admin-Recover-Backup-Invalid-Index");
+            return;
+        }
+
+        String key = keys.get(index);
+
+        List<?> itemsList = configuration.getList(key + ".player-inventory");
+
+        if (itemsList == null) return;
+
+        for (Object itemObj : itemsList) {
+            if (!(itemObj instanceof ItemStack itemStack)) {
+                PlayerMessage.sendPlayerMessageWithoutConfig(player, "&4CRITICAL ERROR: &cPlease check console for more information");
+                GalaxyGraves.getInstance().getLogger().severe("Invalid item in backup list: " + itemObj);
+                continue;
+            }
+            player.getInventory().addItem(itemStack);
+        }
+
+        PlayerMessage.sendMessage(player, "Admin-Recover-Backup");
+    }
+
 
     private String getDate() {
         LocalDateTime now = LocalDateTime.now();

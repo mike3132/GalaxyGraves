@@ -8,7 +8,19 @@ Version: 'Version 1.0'
 ConfigVersion: '1.0'
 
 #✍✍✍✍✍Permissions✍✍✍✍✍
+#GalaxyGraves.Command.Grave > Grants access to use the /grave command to see the location of all of their active graves
+#GalaxyGraves.Command.Admin > Base admin permission (This is required for all admin commands)
+#GalaxyGraves.Command.Admin.Reload > Grants access to reloading the plugins configuration files
+#GalaxyGraves.Admin.ListActive > Graves access to listing all active graves for other players
+#GalaxyGraves.Grave.Bypass > Grants access to claim graves that do not belong to them
+#GalaxyGraves.Admin.Recover > Grants access to recover player inventories from the graves backup files
 
+#📝📝📝📝
+#WARNING: The following permissions grant access to extremely dangerous commands that can and will cause issues with graves if not used properly.
+#WARNING: I am not responsible for you giving this out to random players and them causing corruptions with graves.
+
+#GalaxyGraves.Admin.ForceRemove > Grants access to force removing active graves for other players.
+#📝📝📝📝
 #✍✍✍✍✍Permissions✍✍✍✍✍
 
 #####You can Modify the following how you wish#####
@@ -39,6 +51,11 @@ Grave-Lifetime: 1200
 #If you want the plugin to send a message to the player when their grave expires.
 #You can configure how this messages looks in the messages.yml
 Player-Grave-Expire-Message: true
+
+#Should players be allowed to take a grave that doesn't belong to them?
+#Players with the "GalaxyGraves.Admin.Bypass" permission override this by default
+#You can configure how this messages looks in the messages.yml
+Player-Take-Others-Grave: false
 
 
 

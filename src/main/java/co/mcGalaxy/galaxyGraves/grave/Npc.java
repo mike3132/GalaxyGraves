@@ -57,23 +57,25 @@ public class Npc {
         serverPlayer.connection = new ServerGamePacketListenerImpl(server, new Connection(PacketFlow.SERVERBOUND),
                 serverPlayer, CommonListenerCookie.createInitial(profile, false));
 
-        ServerGamePacketListenerImpl gamePacketListener = ((CraftPlayer) player).getHandle().connection;
-        ServerEntity serverEntity = new ServerEntity(level, serverPlayer, 0, false, packet -> {
+        for (ServerPlayer onlinePlayer : server.getPlayerList().getPlayers()) {
+            ServerGamePacketListenerImpl gamePacketListener = (onlinePlayer).connection;
+            ServerEntity serverEntity = new ServerEntity(level, serverPlayer, 0, false, packet -> {
 
-        }, Set.of());
+            }, Set.of());
 
-        serverPlayer.absMoveTo(location.getX(), location.getY(), location.getZ(),
-                (float) Math.toRadians(location.getYaw()), (float) Math.toRadians(location.getPitch()));
+            serverPlayer.absMoveTo(location.getX(), location.getY(), location.getZ(),
+                    (float) Math.toRadians(location.getYaw()), (float) Math.toRadians(location.getPitch()));
 
-        gamePacketListener.send(new ClientboundPlayerInfoUpdatePacket(ClientboundPlayerInfoUpdatePacket.Action.ADD_PLAYER, serverPlayer));
+            gamePacketListener.send(new ClientboundPlayerInfoUpdatePacket(ClientboundPlayerInfoUpdatePacket.Action.ADD_PLAYER, serverPlayer));
+
+            gamePacketListener.send(serverPlayer.getAddEntityPacket(serverEntity));
+            gamePacketListener.send(new ClientboundSetEntityDataPacket(serverPlayer.getId(), serverPlayer.getEntityData().packAll()));
+        }
 
         serverPlayer.setPose(Pose.SLEEPING);
 
         level.addFreshEntity(serverPlayer);
         serverPlayer.setInvulnerable(true);
-
-        gamePacketListener.send(serverPlayer.getAddEntityPacket(serverEntity));
-        gamePacketListener.send(new ClientboundSetEntityDataPacket(serverPlayer.getId(), serverPlayer.getEntityData().packAll()));
 
         this.serverPlayer = serverPlayer;
     }
