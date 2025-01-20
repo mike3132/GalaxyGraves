@@ -57,6 +57,12 @@ Player-Grave-Expire-Message: true
 #You can configure how this messages looks in the messages.yml
 Player-Take-Others-Grave: false
 
+#Should the plugin play an animation when a player claims their grave?
+Claim-Animation: true
+
+#Should the plugin play a sound when a player claims their grave?
+Claim-Sound: true
+
 
 
 

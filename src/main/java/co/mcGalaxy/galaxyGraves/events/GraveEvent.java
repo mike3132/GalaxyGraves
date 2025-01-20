@@ -3,6 +3,7 @@ package co.mcGalaxy.galaxyGraves.events;
 import co.mcGalaxy.galaxyGraves.GalaxyGraves;
 import co.mcGalaxy.galaxyGraves.chat.PlayerMessage;
 import co.mcGalaxy.galaxyGraves.grave.Grave;
+import co.mcGalaxy.galaxyGraves.utils.ClaimUtils;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.entity.*;
@@ -16,10 +17,13 @@ import org.bukkit.inventory.ItemStack;
 public class GraveEvent implements Listener {
 
     private final GalaxyGraves plugin;
+    private final ClaimUtils claimUtils = new ClaimUtils();
     private final int pistonDistance = GalaxyGraves.getInstance().getConfig().getInt("Grave-Distance-To-Piston");
     private final boolean playerDeathMessage = GalaxyGraves.getInstance().getConfig().getBoolean("Player-Death-Message");
     private final boolean graveReturnItemsMessage = GalaxyGraves.getInstance().getConfig().getBoolean("Grave-Return-Item-Message");
     private final boolean playerClaimOther = GalaxyGraves.getInstance().getConfig().getBoolean("Player-Take-Others-Grave");
+    private final boolean claimAnimation = GalaxyGraves.getInstance().getConfig().getBoolean("Claim-Animation");
+    private final boolean claimSound = GalaxyGraves.getInstance().getConfig().getBoolean("Claim-Sound");
 
     public GraveEvent(GalaxyGraves plugin) {
         this.plugin = plugin;
@@ -90,6 +94,14 @@ public class GraveEvent implements Listener {
             if (graveReturnItemsMessage) {
                 PlayerMessage.sendMessage(player, "Grave-Return-Item-Message");
             }
+        }
+
+        if (claimAnimation) {
+            claimUtils.playerClaim(foundGrave.getLocation().getBlock(), player);
+        }
+
+        if (claimSound) {
+            player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1, 1);
         }
 
         foundGrave.remove();
