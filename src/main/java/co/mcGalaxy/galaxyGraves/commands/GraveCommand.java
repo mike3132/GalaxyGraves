@@ -49,16 +49,6 @@ public class GraveCommand implements CommandExecutor {
             return false;
         }
 
-        if (args[0].equalsIgnoreCase("Spawn")) {
-            Grave grave = new Grave(player, player.getUniqueId());
-            grave.create();
-            this.plugin.graveManager.add(grave);
-            this.plugin.graveManager.saveGrave(player.getUniqueId(), grave);
-
-            PlayerMessage.sendPlayerMessageWithoutConfig(player, "&2Grave spawned");
-            return false;
-        }
-
         switch (args[0].toLowerCase()) {
             case "reload":
                 if (!player.hasPermission("GalaxyGraves.Command.Admin.Reload")) {
